@@ -112,5 +112,76 @@ namespace QuizAppManager
                 return true;
             }
         }
+
+        public static List<Question> GetQuestions()
+        {
+            List<Question> questions = new List<Question>();
+
+            FirebaseResponse response = client.Get("Questions");
+            if (response.Exception != null)
+            {
+                logger.Error(response.Exception.Message);
+                return null;
+            }
+
+            Dictionary<string, Question> deserializedResponse = JsonConvert.DeserializeObject<Dictionary<string, Question>>(response.Body);
+            if (deserializedResponse != null)
+            {
+                foreach (string key in deserializedResponse.Keys)
+                {
+                    Question question = deserializedResponse[key];
+                    question.Id = key;
+                    questions.Add(question);
+                }
+            }
+
+            logger.Info(String.Format("Retrieved {0} categories", questions.Count));
+            return questions;
+        }
+
+        public static bool EditQuestion(Question question)
+        {
+            FirebaseResponse response = client.Update("Questions/" + question.Id, question);
+            if (response.Exception != null)
+            {
+                logger.Error(response.Exception.Message);
+                return false;
+            }
+            else
+            {
+                logger.Info(String.Format("Question edited - response.Body: {0}", response.Body));
+                return true;
+            }
+        }
+
+        public static bool DeleteQuestion(Question question)
+        {
+            DeleteResponse response = client.Delete("Questions/" + question.Id);
+            if (response.Exception != null)
+            {
+                logger.Error(response.Exception.Message);
+                return false;
+            }
+            else
+            {
+                logger.Info(String.Format("Question deleted - response.Body: {0}", response.Body));
+                return true;
+            }
+        }
+
+        public static bool InsertQuestion(Question question)
+        {
+            PushResponse response = client.Push("Questions", question);
+            if (response.Exception != null)
+            {
+                logger.Error(response.Exception.Message);
+                return false;
+            }
+            else
+            {
+                logger.Info(String.Format("Question added - response.Body: {0}", response.Body));
+                return true;
+            }
+        }
     }
 }

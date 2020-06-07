@@ -40,16 +40,18 @@ namespace QuizAppManager
 
             dataSet = new DataSet();
             DataTable table = dataSet.Tables.Add("categories");
+            table.Columns.Add("lp");
             table.Columns.Add("id");
             table.Columns.Add("name");
             table.Columns.Add("description");
 
-            foreach (Category category in categories)
+            for(int i = 0; i < categories.Count; i++)
             {
                 DataRow row = table.NewRow();
-                row["id"] = category.Id;
-                row["name"] = category.Name;
-                row["description"] = category.Description;
+                row["lp"] = i+1;
+                row["id"] = categories[i].Id;
+                row["name"] = categories[i].Name;
+                row["description"] = categories[i].Description;
                 table.Rows.Add(row);
             }
 
@@ -58,11 +60,17 @@ namespace QuizAppManager
 
         private void categoriesGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataRow row = dataSet.Tables["categories"].Rows[e.RowIndex];
+            if(e.RowIndex < 0 || e.RowIndex >= dataSet.Tables["categories"].Rows.Count)
+            {
+                return;
+            }
+
+            DataGridViewRow row = categoriesGridView.Rows[e.RowIndex];
+
             Category category = new Category();
-            category.Id = row["id"] as string;
-            category.Name = row["name"] as string;
-            category.Description = row["description"] as string;
+            category.Id = row.Cells["id"].Value as string;
+            category.Name = row.Cells["name"].Value as string;
+            category.Description = row.Cells["description"].Value as string;
 
             using (CategoryEditForm categoryEditForm = new CategoryEditForm(category))
             {

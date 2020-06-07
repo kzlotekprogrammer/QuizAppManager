@@ -39,7 +39,10 @@ namespace QuizAppManager
 
         private void buttonQuestions_Click(object sender, EventArgs e)
         {
-
+            using(QuestionsListForm questionsListForm = new QuestionsListForm())
+            {
+                questionsListForm.ShowDialog();
+            }
         }
 
         private void buttonStatistics_Click(object sender, EventArgs e)

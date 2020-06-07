@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.categoriesGridView = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonNew = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.info = new System.Windows.Forms.Label();
+            this.lp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.categoriesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lp,
             this.id,
             this.name,
             this.description});
@@ -57,27 +59,6 @@
             this.categoriesGridView.Size = new System.Drawing.Size(763, 339);
             this.categoriesGridView.TabIndex = 0;
             this.categoriesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.categoriesGridView_CellDoubleClick);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
             // 
             // buttonNew
             // 
@@ -119,6 +100,34 @@
             this.info.Size = new System.Drawing.Size(0, 13);
             this.info.TabIndex = 7;
             // 
+            // lp
+            // 
+            this.lp.DataPropertyName = "lp";
+            this.lp.HeaderText = "Lp";
+            this.lp.Name = "lp";
+            this.lp.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
             // CategoriesListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,12 +151,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView categoriesGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label info;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
     }
 }

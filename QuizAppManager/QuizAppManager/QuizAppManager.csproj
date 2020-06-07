@@ -91,13 +91,38 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\QuestionEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestionEditForm.Designer.cs">
+      <DependentUpon>QuestionEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuestionNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestionNewForm.Designer.cs">
+      <DependentUpon>QuestionNewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuestionsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestionsListForm.Designer.cs">
+      <DependentUpon>QuestionsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\WaitForm.Designer.cs">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WaitFormWithParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WaitFormWithParameter.Designer.cs">
+      <DependentUpon>WaitFormWithParameter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CategoriesListForm.resx">
@@ -112,8 +137,20 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuestionEditForm.resx">
+      <DependentUpon>QuestionEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuestionNewForm.resx">
+      <DependentUpon>QuestionNewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuestionsListForm.resx">
+      <DependentUpon>QuestionsListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\WaitForm.resx">
       <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WaitFormWithParameter.resx">
+      <DependentUpon>WaitFormWithParameter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
