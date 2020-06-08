@@ -44,10 +44,5 @@ namespace QuizAppManager
                 questionsListForm.ShowDialog();
             }
         }
-
-        private void buttonStatistics_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

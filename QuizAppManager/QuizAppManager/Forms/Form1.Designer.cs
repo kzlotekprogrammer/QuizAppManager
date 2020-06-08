@@ -30,7 +30,6 @@
         {
             this.buttonCategories = new System.Windows.Forms.Button();
             this.buttonQuestions = new System.Windows.Forms.Button();
-            this.buttonStatistics = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCategories
@@ -53,22 +52,11 @@
             this.buttonQuestions.UseVisualStyleBackColor = true;
             this.buttonQuestions.Click += new System.EventHandler(this.buttonQuestions_Click);
             // 
-            // buttonStatistics
-            // 
-            this.buttonStatistics.Location = new System.Drawing.Point(417, 13);
-            this.buttonStatistics.Name = "buttonStatistics";
-            this.buttonStatistics.Size = new System.Drawing.Size(196, 129);
-            this.buttonStatistics.TabIndex = 3;
-            this.buttonStatistics.Text = "Statistics";
-            this.buttonStatistics.UseVisualStyleBackColor = true;
-            this.buttonStatistics.Click += new System.EventHandler(this.buttonStatistics_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonStatistics);
             this.Controls.Add(this.buttonQuestions);
             this.Controls.Add(this.buttonCategories);
             this.Name = "Form1";
@@ -81,7 +69,6 @@
         #endregion
         private System.Windows.Forms.Button buttonCategories;
         private System.Windows.Forms.Button buttonQuestions;
-        private System.Windows.Forms.Button buttonStatistics;
     }
 }
 
