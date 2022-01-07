@@ -1,12 +1,7 @@
 ﻿using QuizAppManager.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuizAppManager.Forms
@@ -36,20 +31,20 @@ namespace QuizAppManager.Forms
             }
         }
 
-        private void buttonNew_Click(object sender, EventArgs e)
+        private void ButtonNew_Click(object sender, EventArgs e)
         {
-            using(QuestionNewForm questionNewForm = new QuestionNewForm(Categories))
+            using (QuestionEditForm questionNewForm = new QuestionEditForm(Categories))
             {
                 questionNewForm.ShowDialog();
-                if(questionNewForm.DialogResult == DialogResult.OK)
+                if (questionNewForm.DialogResult == DialogResult.OK)
                 {
                     LoadQuestions();
-                    info.Text = "Question added successfully";
+                    info.Text = "Dodano nowe pytanie";
                 }
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex < 0 || e.RowIndex >= DataSet.Tables["questions"].Rows.Count)
             {
@@ -67,13 +62,13 @@ namespace QuizAppManager.Forms
             question.Answer4 = row.Cells["answer4"].Value as string;
             question.TrueAnswer = row.Cells["trueAnswer"].Value as string;
 
-            using (QuestionEditForm questionEditForm = new QuestionEditForm(question, Categories))
+            using (QuestionEditForm questionEditForm = new QuestionEditForm(Categories, question))
             {
                 questionEditForm.ShowDialog();
                 if (questionEditForm.DialogResult == DialogResult.OK)
                 {
                     LoadQuestions();
-                    info.Text = "Changes made successfully";
+                    info.Text = "Zapisano pomyślnie dane";
                 }
             }
         }

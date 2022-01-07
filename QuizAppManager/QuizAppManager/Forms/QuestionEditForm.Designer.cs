@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuestionEditForm));
             this.label7 = new System.Windows.Forms.Label();
             this.trueAnswerComboBox = new System.Windows.Forms.ComboBox();
             this.info = new System.Windows.Forms.Label();
@@ -55,73 +56,90 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 251);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.Size = new System.Drawing.Size(112, 13);
             this.label7.TabIndex = 46;
-            this.label7.Text = "true answer";
+            this.label7.Text = "Poprawna odpowiedź:";
             // 
             // trueAnswerComboBox
             // 
+            this.trueAnswerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.trueAnswerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.trueAnswerComboBox.FormattingEnabled = true;
-            this.trueAnswerComboBox.Location = new System.Drawing.Point(81, 248);
+            this.trueAnswerComboBox.Location = new System.Drawing.Point(132, 248);
             this.trueAnswerComboBox.Name = "trueAnswerComboBox";
-            this.trueAnswerComboBox.Size = new System.Drawing.Size(238, 21);
+            this.trueAnswerComboBox.Size = new System.Drawing.Size(440, 21);
             this.trueAnswerComboBox.TabIndex = 45;
             // 
             // info
             // 
             this.info.AutoSize = true;
-            this.info.Location = new System.Drawing.Point(78, 301);
+            this.info.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.info.Location = new System.Drawing.Point(12, 280);
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(0, 13);
             this.info.TabIndex = 44;
             // 
             // close
             // 
-            this.close.Location = new System.Drawing.Point(243, 275);
+            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.close.BackColor = System.Drawing.Color.Chocolate;
+            this.close.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.close.Location = new System.Drawing.Point(472, 306);
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(76, 23);
+            this.close.Size = new System.Drawing.Size(100, 23);
             this.close.TabIndex = 43;
-            this.close.Text = "Close";
-            this.close.UseVisualStyleBackColor = true;
-            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.Text = "Zamknij";
+            this.close.UseVisualStyleBackColor = false;
+            this.close.Click += new System.EventHandler(this.Close_Click);
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(81, 275);
+            this.save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.save.BackColor = System.Drawing.Color.ForestGreen;
+            this.save.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.save.Location = new System.Drawing.Point(12, 306);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(73, 23);
+            this.save.Size = new System.Drawing.Size(100, 23);
             this.save.TabIndex = 42;
-            this.save.Text = "Save";
-            this.save.UseVisualStyleBackColor = true;
-            this.save.Click += new System.EventHandler(this.save_Click);
+            this.save.Text = "Zapisz";
+            this.save.UseVisualStyleBackColor = false;
+            this.save.Click += new System.EventHandler(this.Save_Click);
             // 
             // answer4TextBox
             // 
-            this.answer4TextBox.Location = new System.Drawing.Point(81, 222);
+            this.answer4TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.answer4TextBox.Location = new System.Drawing.Point(132, 222);
             this.answer4TextBox.Name = "answer4TextBox";
-            this.answer4TextBox.Size = new System.Drawing.Size(238, 20);
+            this.answer4TextBox.Size = new System.Drawing.Size(440, 20);
             this.answer4TextBox.TabIndex = 41;
             // 
             // answer3TextBox
             // 
-            this.answer3TextBox.Location = new System.Drawing.Point(81, 196);
+            this.answer3TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.answer3TextBox.Location = new System.Drawing.Point(132, 196);
             this.answer3TextBox.Name = "answer3TextBox";
-            this.answer3TextBox.Size = new System.Drawing.Size(238, 20);
+            this.answer3TextBox.Size = new System.Drawing.Size(440, 20);
             this.answer3TextBox.TabIndex = 40;
             // 
             // answer2TextBox
             // 
-            this.answer2TextBox.Location = new System.Drawing.Point(81, 170);
+            this.answer2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.answer2TextBox.Location = new System.Drawing.Point(132, 170);
             this.answer2TextBox.Name = "answer2TextBox";
-            this.answer2TextBox.Size = new System.Drawing.Size(238, 20);
+            this.answer2TextBox.Size = new System.Drawing.Size(440, 20);
             this.answer2TextBox.TabIndex = 39;
             // 
             // answer1TextBox
             // 
-            this.answer1TextBox.Location = new System.Drawing.Point(81, 144);
+            this.answer1TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.answer1TextBox.Location = new System.Drawing.Point(132, 144);
             this.answer1TextBox.Name = "answer1TextBox";
-            this.answer1TextBox.Size = new System.Drawing.Size(238, 20);
+            this.answer1TextBox.Size = new System.Drawing.Size(440, 20);
             this.answer1TextBox.TabIndex = 38;
             // 
             // label6
@@ -129,44 +147,46 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 37;
-            this.label6.Text = "answer 4";
+            this.label6.Text = "Odpowiedź D:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 199);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 36;
-            this.label5.Text = "answer 3";
+            this.label5.Text = "Odpowiedź C:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 173);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 35;
-            this.label4.Text = "answer 2";
+            this.label4.Text = "Odpowiedź B:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 147);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 34;
-            this.label3.Text = "answer 1";
+            this.label3.Text = "Odpowiedź A:";
             // 
             // categoryComboBox
             // 
+            this.categoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(81, 35);
+            this.categoryComboBox.Location = new System.Drawing.Point(132, 35);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(238, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(440, 21);
             this.categoryComboBox.TabIndex = 33;
             // 
             // label2
@@ -174,16 +194,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 32;
-            this.label2.Text = "question";
+            this.label2.Text = "Treść pytania:";
             // 
             // questionTextBox
             // 
-            this.questionTextBox.Location = new System.Drawing.Point(81, 62);
+            this.questionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.questionTextBox.Location = new System.Drawing.Point(132, 62);
             this.questionTextBox.Multiline = true;
             this.questionTextBox.Name = "questionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(238, 72);
+            this.questionTextBox.Size = new System.Drawing.Size(440, 72);
             this.questionTextBox.TabIndex = 31;
             // 
             // label1
@@ -191,42 +213,47 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "category";
+            this.label1.Text = "Kategoria:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 13);
+            this.label8.Size = new System.Drawing.Size(19, 13);
             this.label8.TabIndex = 47;
-            this.label8.Text = "id";
+            this.label8.Text = "Id:";
             // 
             // idTextBox
             // 
+            this.idTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(81, 9);
+            this.idTextBox.Location = new System.Drawing.Point(132, 9);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(238, 20);
+            this.idTextBox.Size = new System.Drawing.Size(440, 20);
             this.idTextBox.TabIndex = 48;
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(160, 275);
+            this.delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.delete.BackColor = System.Drawing.Color.Red;
+            this.delete.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.delete.Location = new System.Drawing.Point(118, 306);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(77, 23);
+            this.delete.Size = new System.Drawing.Size(100, 23);
             this.delete.TabIndex = 49;
-            this.delete.Text = "Delete";
-            this.delete.UseVisualStyleBackColor = true;
-            this.delete.Click += new System.EventHandler(this.delete_Click);
+            this.delete.Text = "Usuń";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // QuestionEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(584, 341);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label8);
@@ -247,11 +274,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuestionEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "QuestionEditForm";
+            this.Text = "Edycja pytania";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestionEditForm_FormClosing);
-            this.Load += new System.EventHandler(this.QuestionEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

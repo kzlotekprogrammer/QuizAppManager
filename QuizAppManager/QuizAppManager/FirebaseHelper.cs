@@ -5,13 +5,7 @@ using FireSharp.Response;
 using Newtonsoft.Json;
 using NLog;
 using QuizAppManager.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace QuizAppManager
 {
@@ -64,7 +58,7 @@ namespace QuizAppManager
                 }
             }
 
-            logger.Info(String.Format("Retrieved {0} categories", categories.Count));
+            logger.Info(string.Format("Retrieved {0} categories", categories.Count));
             return categories;
         }
 
@@ -78,7 +72,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Category edited - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Category edited - response.Body: {0}", response.Body));
                 return true;
             }
         }
@@ -93,7 +87,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Category deleted - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Category deleted - response.Body: {0}", response.Body));
                 return true;
             }
         }
@@ -108,7 +102,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Category added - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Category added - response.Body: {0}", response.Body));
                 return true;
             }
         }
@@ -135,7 +129,7 @@ namespace QuizAppManager
                 }
             }
 
-            logger.Info(String.Format("Retrieved {0} categories", questions.Count));
+            logger.Info(string.Format("Retrieved {0} categories", questions.Count));
             return questions;
         }
 
@@ -149,7 +143,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Question edited - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Question edited - response.Body: {0}", response.Body));
                 return true;
             }
         }
@@ -164,7 +158,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Question deleted - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Question deleted - response.Body: {0}", response.Body));
                 return true;
             }
         }
@@ -179,7 +173,7 @@ namespace QuizAppManager
             }
             else
             {
-                logger.Info(String.Format("Question added - response.Body: {0}", response.Body));
+                logger.Info(string.Format("Question added - response.Body: {0}", response.Body));
                 return true;
             }
         }
