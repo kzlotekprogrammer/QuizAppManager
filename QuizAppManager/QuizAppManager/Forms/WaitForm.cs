@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,16 +10,13 @@ namespace QuizAppManager.Forms
         public WaitForm(Action worker)
         {
             InitializeComponent();
-            if(worker == null)
-            {
-                throw new ArgumentNullException();
-            }
+
             Worker = worker;
         }
 
         private void WaitForm_Load(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(Worker).ContinueWith(t => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+            Task.Factory.StartNew(Worker).ContinueWith(t => { Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
         }
     }
 }

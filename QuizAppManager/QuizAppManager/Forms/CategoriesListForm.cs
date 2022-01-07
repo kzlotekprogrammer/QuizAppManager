@@ -2,12 +2,7 @@
 using QuizAppManager.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuizAppManager
@@ -78,20 +73,20 @@ namespace QuizAppManager
                 if (categoryEditForm.DialogResult == DialogResult.OK)
                 {
                     LoadCategories();
-                    info.Text = "Changes made successfully";
+                    info.Text = "Zapisano pomyślnie dane";
                 }
             }
         }
 
-        private void buttonNew_Click(object sender, EventArgs e)
+        private void ButtonNew_Click(object sender, EventArgs e)
         {
-            using (CategoryNewForm categoryNewForm = new CategoryNewForm())
+            using (CategoryEditForm categoryEditForm = new CategoryEditForm())
             {
-                categoryNewForm.ShowDialog();
-                if(categoryNewForm.DialogResult == DialogResult.OK)
+                categoryEditForm.ShowDialog();
+                if(categoryEditForm.DialogResult == DialogResult.OK)
                 {
                     LoadCategories();
-                    info.Text = "Category added successfully";
+                    info.Text = "Dodano nową kategorię";
                 }
             }
         }

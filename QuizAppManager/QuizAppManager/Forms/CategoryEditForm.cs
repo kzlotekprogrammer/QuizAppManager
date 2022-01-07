@@ -1,43 +1,69 @@
 ﻿using QuizAppManager.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuizAppManager.Forms
 {
     public partial class CategoryEditForm : Form
     {
+        private Category CurrentCategory;
+
         public bool ChangesExists { get; private set; } = false;
 
-        public CategoryEditForm(Category category)
+        public CategoryEditForm(Category category = null)
         {
             InitializeComponent();
 
-            id.Text = category.Id;
-            name.Text = category.Name;
-            description.Text = category.Description;
+            CurrentCategory = category;
+
+            if (CurrentCategory != null)
+            {
+                id.Text = category.Id;
+                name.Text = category.Name;
+                description.Text = category.Description;
+            }
+            else
+            {
+                btnDelete.Visible = false;
+            }
         }
 
-        private void CategoryEditForm_Load(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
+            if (!ValidateForm())
+                return;
 
-        }
+            Category category = new Category { Name = name.Text, Description = description.Text };
 
-        private void save_Click(object sender, EventArgs e)
-        {
-            using(WaitForm waitForm = new WaitForm(Save))
+            Action<Category> action;
+            if (CurrentCategory == null)
+            {
+                action = Add;
+            }
+            else
+            {
+                action = Save;
+                category.Id = id.Text;
+            }
+
+            using (WaitForm waitForm = new WaitForm(() => action.Invoke(category)))
             {
                 waitForm.ShowDialog();
             }
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrEmpty(name.Text))
+            {
+                info.Text = "Nie wprowadzono nazwy kategorii";
+                return false;
+            }
+
+            return true;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
         {
             using (WaitForm waitForm = new WaitForm(Delete))
             {
@@ -45,23 +71,40 @@ namespace QuizAppManager.Forms
             }
         }
 
-        private void Save()
+        private void Save(Category category)
         {
-            Category category = new Category { Id = id.Text, Name = name.Text, Description = description.Text };
             if (FirebaseHelper.EditCategory(category))
             {
-
                 Invoke(new Action(() =>
                 {
-                    ChangesExists = true;
-                    info.Text = "Changes made successfully";
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }));
             }
             else
             {
                 Invoke(new Action(() =>
                 {
-                    info.Text = "Operation failed";
+                    info.Text = "Operacja nie powiodła się";
+                }));
+            }
+        }
+
+        private void Add(Category category)
+        {
+            if (FirebaseHelper.InsertCategory(category))
+            {
+                Invoke(new Action(() =>
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }));
+            }
+            else
+            {
+                Invoke(new Action(() =>
+                {
+                    info.Text = "Operacja nie powiodła się";
                 }));
             }
         }
@@ -81,19 +124,19 @@ namespace QuizAppManager.Forms
             {
                 Invoke(new Action(() =>
                 {
-                    info.Text = "Operation failed";
+                    info.Text = "Operacja nie powiodła się";
                 }));
             }
         }
 
-        private void close_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         private void CategoryEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(ChangesExists)
+            if (ChangesExists)
             {
                 DialogResult = DialogResult.OK;
             }

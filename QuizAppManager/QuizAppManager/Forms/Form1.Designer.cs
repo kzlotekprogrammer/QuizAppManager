@@ -28,37 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCategories = new System.Windows.Forms.Button();
-            this.buttonQuestions = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.btnCategories = new System.Windows.Forms.Button();
+            this.btnQuestions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonCategories
+            // btnCategories
             // 
-            this.buttonCategories.Location = new System.Drawing.Point(13, 13);
-            this.buttonCategories.Name = "buttonCategories";
-            this.buttonCategories.Size = new System.Drawing.Size(196, 129);
-            this.buttonCategories.TabIndex = 1;
-            this.buttonCategories.Text = "Categories";
-            this.buttonCategories.UseVisualStyleBackColor = true;
-            this.buttonCategories.Click += new System.EventHandler(this.buttonCategories_Click);
+            this.btnCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnCategories.Image")));
+            this.btnCategories.Location = new System.Drawing.Point(13, 13);
+            this.btnCategories.Name = "btnCategories";
+            this.btnCategories.Size = new System.Drawing.Size(200, 200);
+            this.btnCategories.TabIndex = 1;
+            this.btnCategories.Text = "Kategorie";
+            this.btnCategories.UseVisualStyleBackColor = true;
+            this.btnCategories.Click += new System.EventHandler(this.buttonCategories_Click);
             // 
-            // buttonQuestions
+            // btnQuestions
             // 
-            this.buttonQuestions.Location = new System.Drawing.Point(215, 13);
-            this.buttonQuestions.Name = "buttonQuestions";
-            this.buttonQuestions.Size = new System.Drawing.Size(196, 129);
-            this.buttonQuestions.TabIndex = 2;
-            this.buttonQuestions.Text = "Questions";
-            this.buttonQuestions.UseVisualStyleBackColor = true;
-            this.buttonQuestions.Click += new System.EventHandler(this.buttonQuestions_Click);
+            this.btnQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnQuestions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuestions.Image")));
+            this.btnQuestions.Location = new System.Drawing.Point(215, 13);
+            this.btnQuestions.Name = "btnQuestions";
+            this.btnQuestions.Size = new System.Drawing.Size(200, 200);
+            this.btnQuestions.TabIndex = 2;
+            this.btnQuestions.Text = "Pytania";
+            this.btnQuestions.UseVisualStyleBackColor = true;
+            this.btnQuestions.Click += new System.EventHandler(this.buttonQuestions_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonQuestions);
-            this.Controls.Add(this.buttonCategories);
+            this.ClientSize = new System.Drawing.Size(645, 452);
+            this.Controls.Add(this.btnQuestions);
+            this.Controls.Add(this.btnCategories);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "QuizAppManager";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -67,8 +73,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonCategories;
-        private System.Windows.Forms.Button buttonQuestions;
+        private System.Windows.Forms.Button btnCategories;
+        private System.Windows.Forms.Button btnQuestions;
     }
 }
 

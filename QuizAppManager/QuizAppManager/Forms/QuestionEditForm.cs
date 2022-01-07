@@ -1,12 +1,6 @@
 ﻿using QuizAppManager.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuizAppManager.Forms
@@ -14,19 +8,34 @@ namespace QuizAppManager.Forms
     public partial class QuestionEditForm : Form
     {
         private List<Category> Categories;
+        private Question CurrentQuestion;
 
         public bool ChangesExists { get; private set; } = false;
 
-        public QuestionEditForm(Question question, List<Category> categories)
+        public QuestionEditForm(List<Category> categories, Question question = null)
         {
             InitializeComponent();
 
             Categories = categories;
             Categories.ForEach(x => categoryComboBox.Items.Add(x.Name));
 
-            List<string> items = new List<string>() { "Answer 1", "Answer 2", "Answer 3", "Answer 4" };
+            CurrentQuestion = question;
+
+            List<Answer> items = new List<Answer>() { Answer.A, Answer.B, Answer.C, Answer.D };
             items.ForEach(x => trueAnswerComboBox.Items.Add(x));
 
+            if (CurrentQuestion != null)
+            {
+                SetControlsData(question);                
+            }
+            else
+            {
+                delete.Visible = false;
+            }
+        }
+
+        private void SetControlsData(Question question)
+        {
             for (int i = 0; i < Categories.Count; i++)
             {
                 if (Categories[i].Id == question.CategoryId)
@@ -45,77 +54,111 @@ namespace QuizAppManager.Forms
             trueAnswerComboBox.Text = question.TrueAnswer;
         }
 
-        private void QuestionEditForm_Load(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void save_Click(object sender, EventArgs e)
-        {
-            if (categoryComboBox.SelectedItem != null
-                && !String.IsNullOrEmpty(categoryComboBox.SelectedItem as string)
-                && trueAnswerComboBox.SelectedItem != null
-                && !String.IsNullOrEmpty(trueAnswerComboBox.SelectedItem as string)
-                && !String.IsNullOrEmpty(questionTextBox.Text)
-                && !String.IsNullOrEmpty(answer1TextBox.Text)
-                && !String.IsNullOrEmpty(answer2TextBox.Text)
-                && !String.IsNullOrEmpty(answer3TextBox.Text)
-                && !String.IsNullOrEmpty(answer4TextBox.Text))
+            if (FormFilled())
             {
-                Question question = new Question
-                {
-                    Id = idTextBox.Text,
-                    CategoryId = Categories[categoryComboBox.SelectedIndex].Id,
-                    Content = questionTextBox.Text,
-                    Answer1 = answer1TextBox.Text,
-                    Answer2 = answer2TextBox.Text,
-                    Answer3 = answer3TextBox.Text,
-                    Answer4 = answer4TextBox.Text,
-                    TrueAnswer = trueAnswerComboBox.SelectedItem as string
-                };
+                Action<Question> action;
+                if (CurrentQuestion == null)
+                    action = Add;
+                else
+                    action = Save;
 
-                using (WaitFormWithParameter waitFormWithParameter = new WaitFormWithParameter(Save, question))
+                Question question = CreateQuestionFromControlls();
+
+                using (WaitForm waitForm = new WaitForm(() => action.Invoke(question)))
                 {
-                    waitFormWithParameter.ShowDialog();
+                    waitForm.ShowDialog();
                 }
             }
             else
             {
-                info.Text = "Please fill all data";
+                info.Text = "Nie wprowadzono wszystkich wymaganych danych";
             }
         }
 
-        private void Save(object question)
+        private Question CreateQuestionFromControlls()
         {
-            if (FirebaseHelper.EditQuestion(question as Question))
+            Question question = new Question
+            {
+                CategoryId = Categories[categoryComboBox.SelectedIndex].Id,
+                Content = questionTextBox.Text,
+                Answer1 = answer1TextBox.Text,
+                Answer2 = answer2TextBox.Text,
+                Answer3 = answer3TextBox.Text,
+                Answer4 = answer4TextBox.Text,
+                TrueAnswer = trueAnswerComboBox.SelectedItem.ToString()
+            };
+
+            if (CurrentQuestion != null)
+            {
+                question.Id = idTextBox.Text;
+            }
+
+            return question;
+        }
+
+        private bool FormFilled()
+        {
+            return categoryComboBox.SelectedItem != null
+                && !string.IsNullOrEmpty(categoryComboBox.SelectedItem as string)
+                && trueAnswerComboBox.SelectedItem != null
+                && !string.IsNullOrEmpty(trueAnswerComboBox.SelectedItem.ToString())
+                && !string.IsNullOrEmpty(questionTextBox.Text)
+                && !string.IsNullOrEmpty(answer1TextBox.Text)
+                && !string.IsNullOrEmpty(answer2TextBox.Text)
+                && !string.IsNullOrEmpty(answer3TextBox.Text)
+                && !string.IsNullOrEmpty(answer4TextBox.Text);
+        }
+
+        private void Save(Question question)
+        {
+            if (FirebaseHelper.EditQuestion(question))
             {
                 Invoke(new Action(() =>
                 {
-                    ChangesExists = true;
-                    info.Text = "Changes made successfully";
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }));
             }
             else
             {
                 Invoke(new Action(() =>
                 {
-                    info.Text = "Operation failed";
+                    info.Text = "Operacja nie powiodła się";
                 }));
             }
         }
 
-
-        private void delete_Click(object sender, EventArgs e)
+        private void Add(Question question)
         {
-            using (WaitFormWithParameter waitFormWithParameter = new WaitFormWithParameter(Delete, idTextBox.Text))
+            if (FirebaseHelper.InsertQuestion(question))
             {
-                waitFormWithParameter.ShowDialog();
+                Invoke(new Action(() =>
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }));
+            }
+            else
+            {
+                Invoke(new Action(() =>
+                {
+                    info.Text = "Operacja nie powiodła się";
+                }));
+            }
+        }
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            using (WaitForm waitForm = new WaitForm(Delete))
+            {
+                waitForm.ShowDialog();
             }
         }
 
-        private void Delete(object questionId)
+        private void Delete()
         {
-            if(FirebaseHelper.DeleteQuestion(new Question { Id = questionId as string }))
+            if (FirebaseHelper.DeleteQuestion(new Question { Id = idTextBox.Text }))
             {
                 Invoke(new Action(() =>
                 {
@@ -127,19 +170,19 @@ namespace QuizAppManager.Forms
             {
                 Invoke(new Action(() =>
                 {
-                    info.Text = "Operation failed";
+                    info.Text = "Operacja nie powiodła się";
                 }));
             }
         }
 
-        private void close_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         private void QuestionEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(ChangesExists)
+            if (ChangesExists)
             {
                 DialogResult = DialogResult.OK;
             }
